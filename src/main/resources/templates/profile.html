@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+<nav th:insert="fragments/fragments :: nav-bar-fragment(${user})">
+</nav>
+<div class="user-info-container">
+    <div class="user-info-content">
+        <div th:style="'background:url(' + ${user.avatarImgUrl} + '); background-position: center; background-size: cover;'" class="user-image-block">
+        </div>
+        <div class="article-preview-content-block user-info-position">
+            <div class="user-info-content-row">
+            <h5 th:object="${user}" class="text-white" th:text="${user.getUsername()}">USER</h5>
+            <h5 class="card-title text-white" th:text="${user.getId()}" id="content">Title</h5>
+            </div>
+            <div class="user-info-content-row">
+            <label class="text-white" for="username" th:text="#{lang.name}">Name:</label>
+            <b class="card-title text-white" th:text="${user.getName()}" id="username"></b>
+            </div>
+           <div class="user-info-content-row">
+                <label class="text-white" for="roleName" th:text="#{lang.role}">User roles:</label>
+                <b class="card-title text-white" th:each="userRole : ${user.getRoles()}"th:text="${userRole} + ' '" id="roleName"></b>
+               <p><a th:href="@{/profile/edit}">
+                   <button type="button" class="btn btn-primary w-100" id="profile-edit-button" th:text="#{lang.edit.profile}">Edit profile</button>
+               </a>
+               </p>
+        </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

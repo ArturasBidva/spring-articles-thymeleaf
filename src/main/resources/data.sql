@@ -1,0 +1,1 @@
+insert into USERS(name, password, username) values ( 'bomzara','amogus','dalbasas' )

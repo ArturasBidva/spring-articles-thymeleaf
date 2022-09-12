@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+
+<div class="login-form-container">
+    <div class="login-form-content">
+        <form th:action="@{register}" th:object="${createUserRequest}" method="post">
+            <p>
+                <label class="text-white" for="name" th:text="#{lang.name}"></label>
+                <input class="form-control"
+                       th:field="*{name}"
+                       type="text"
+                       id="name"
+                       th:errorclass="error"
+                       th:placeholder="#{lang.name}"
+                       maxlength="30">
+                <li th:each="err : ${#fields.errors('name')}"
+                    th:text="${err}"
+                    class="error ui-state-error text-white"/>
+            </p>
+            <p>
+                <label class="text-white" for="username" th:text="#{lang.username}"></label>
+                <input class="form-control"
+                       th:field="*{username}"
+                       type="text"
+                       name="username"
+                       id="username"
+                       th:placeholder="#{lang.username}"
+                       maxlength="30">
+            <li th:each="err : ${#fields.errors('username')}" th:text="${err}" class="error ui-state-error text-white"/>
+            </p>
+            <p>
+                <label class="text-white" for="password" th:text="#{lang.password}"></label>
+                <input class="form-control"
+                       th:field="*{password}"
+                       type="password"
+                       name="password"
+                       id="password"
+                       th:placeholder="#{lang.password}"
+                       maxlength="30">
+            </p>
+            <p>
+                <label class="text-white" for="password-repeat" th:text="#{lang.repeat.password}"></label>
+                <input class="form-control"
+                       th:field="*{repeatPassword}"
+                       type="password"
+                       name="password-repeat"
+                       id="password-repeat"
+                       th:placeholder="#{lang.repeat.password}"
+                       maxlength="30">
+            </p>
+            <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error ui-state-error text-white"/>
+            <p></p>
+            <p>
+                <button type="submit" class="btn btn-primary w-100" th:text="#{lang.register}"></button>
+            </p>
+        </form>
+        <p>
+            <a th:href="@{/login}">
+                <button type="button" class="btn btn-info w-100" th:text="#{lang.already.register}"></button>
+            </a>
+        </p>
+    </div>
+</div>
+</div>
+</body>

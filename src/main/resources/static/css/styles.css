@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.itemas {
+    margin: 10px;
+    width: 40vw;
+    background: #232b33;
+    border-radius: 10px;
+}
+
+
+#article-container {
+    width: 100%;
+}
+
+.block-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+html, body {
+    height: max-content;
+    background: linear-gradient(60deg, #29323c 0%, #485563 100%) fixed;
+}
+
+::-webkit-scrollbar {
+    width: auto;
+    height: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background: -webkit-linear-gradient(bottom, rgba(0, 185, 242, 0.5), rgba(12, 126, 207, 0.5));
+    background: linear-gradient(to top, rgba(0, 185, 242, 0.5), rgba(12, 126, 207, 0.5));
+    border-radius: 1em;
+}
+
+
+.login-form-content {
+    width: 20vw;
+}
+
+.login-form-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SI {
+    background-color: transparent;
+    border: 0;
+
+}
+
+.textareaa {
+    resize: none;
+}
+
+.cololo-gg {
+    height: 70vh;
+    border-radius: 10px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.logout-button {
+    width: 100%;
+
+}
+
+.nav-bar-position {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5vh;
+}
+
+.user-info-position {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5vh;
+}
+
+.user-info-container {
+    margin-top: 10vh;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.user-info-content {
+    width: 35vh;
+    min-height: 40vh;
+    background: #232b33;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.user-image-block {
+    height: 20vh;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.user-info-content-row {
+    width: 100%;
+    display: inline-block;
+}
+
+#profile-edit-button {
+    margin-top: 15px;
+}
+
+.comment-author-avatar-image {
+    width: 11vh;
+    height: 11vh;
+    border-radius: 5px;
+}
+
+.comment-content-sub-container {
+    display: flex;
+    border-radius: 5px;
+    width: inherit;
+    background: #485563;
+    padding: 10px;
+}
+
+.comment-content-avatar-container {
+    border-radius: 5px 0 0 5px;
+    background: #485563;
+    width: 11vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-container {
+    display: flex;
+    width: 100%;
+    background: #485563;
+    padding: 15px;
+    border-radius: 5px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.comment-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.comment-delete-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+}
+
+.comment-sub-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.break-word {
+    word-break: break-all;
+    text-align: justify;
+}
+
+.comment-content {
+    padding-left: 10px;
+    display: flex;
+}
+
+#breakword {
+    word-break:break-all;
+}
+.comment-block{
+    padding-top: 1vh;
+}
+.admin-panel-main-container{
+    margin-top: 10vh;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.admin-panel-container{
+width: 35vh;
+}
+#admin-panel-user-info-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.article-preview-content-text-block{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.article-preview-content-block-right{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+
+}
+.post-details-whole-block-padding{
+    padding: 20px;
+}
+.article-content-text-block{
+ display: flex;
+    width: 80%;
+    flex-direction: row;
+}
+.article-info{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+}
+.test{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.buttonai{
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.comment-user-details-info{
+    color: #232b33;
+}
+.kitipsl {
+    width: 100%;
+    text-align: center;
+}
+.mygtukas {
+    background-color: #007bff;
+    padding: 9px;
+    margin-left: 1.1rem;
+    color: white;
+}
+.nextpagebtn {
+}

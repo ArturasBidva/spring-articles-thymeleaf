@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+<nav th:insert="fragments/fragments :: nav-bar-fragment(${user})">
+</nav>
+
+<div class="block-container">
+    <div class="itemas" th:each="post : ${posts}">
+        <div th:style="'background:url(' + ${post.getImageUrl()} + '); background-position: center; background-size: cover;' "
+             class="cololo-gg">
+        </div>
+        <div class="post-details-whole-block-padding">
+            <h5 class="card-title text-white" th:text="${post.getTitle()}">Title</h5>
+            <p class="card-subtitle mb-2 text-muted" th:text="${post.getAuthorName()}">Created by</p>
+            <p class="card-subtitle mb-2 text-muted" th:text="${post.getTime()}">Date created</p>
+            <p class="card-subtitle mb-2 text-muted" th:text="'Comments: '+ ${post.getComments().size()}">Title</p>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a th:href="@{/post/details/{id}(id=${post.getId()})}">
+                    <button
+                            type="button"
+                            class="btn btn-warning"
+                            th:text="#{lang.details}"
+                            >
+                    </button>
+                </a>
+                <div th:if="${user.canEditArticles()}">
+                    <div th:if="${post.getUserId().equals(user.getId()) || user.isAdmin()}">
+                        <form th:action="@{/private/post/remove/{id}(id=${post.getId()})}" th:method="delete">
+                            <input type="hidden" name="method" value="delete"/>
+                            <button type="submit" class="btn btn-danger" th:text="#{lang.delete}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    <div class="kitipsl">
+        <a class="mygtukas" th:if="${pageNumber ne empty and pageNumber ne 0}" th:href="@{/(pageNumber=${pageNumber - 1})}" th:text="#{lang.previous.page}">Previous Page</a>
+        <a class="mygtukas nextpagebtn" th:if="${hasNextPage}" th:href="@{/(pageNumber=${pageNumber + 1})}" th:text="#{lang.next.page}">Next Page </a>
+    </div>
+</div>
+    </div>
+</body>
+</html>

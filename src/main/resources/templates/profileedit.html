@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+<nav th:insert="fragments/fragments :: nav-bar-fragment(${user})">
+</nav>
+<div class="login-form-container">
+    <div class="login-form-content">
+        <form th:action="@{/profile/edit}" th:object="${user}" method="post">
+            <p>
+                <label class="text-white" for="title" th:text="#{lang.name}">User Name</label>
+                <input type="hidden" th:field="*{id}"/>
+                <input class="form-control" type="text" th:field="*{name}" name="title" id="title" maxlength="30"
+                       th:placeholder="#{lang.name}"/>
+                <label class="text-white" for="url" th:text="#{lang.avatar.img}">User Name</label>
+                <input class="form-control" type="text" th:field="*{avatarImgUrl}" name="url" id="url"
+                       th:placeholder="#{lang.avatar.img}"/>
+            </p>
+            <button type="submit" class="btn btn-info w-100" th:text="#{lang.save.profile}">Save profile</button>
+            </p>
+            <div th:if="${#fields.hasAnyErrors()}">
+                <ul>
+                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                </ul>
+            </div>
+        </form>
+        <p>
+            <a href="/profile">
+                <button type="button" class="btn btn-primary w-100" th:text="#{lang.go.back}">Go back</button>
+            </a>
+        </p>
+    </div>
+</div>
+</div>
+</body>

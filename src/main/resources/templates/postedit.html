@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+<nav th:insert="fragments/fragments :: nav-bar-fragment(${user})">
+</nav>
+<div class="login-form-container">
+  <div class="login-form-content">
+    <form th:action="@{/private/post/update}" th:object="${post}" method="post">
+      <p>
+        <label class="text-white" for="title">Article name</label>
+        <input type="hidden" th:field="*{id}"/>
+        <input class="form-control" type="text" th:field="*{title}" name="title" id="title" placeholder="Zopa name" maxlength="30"/>
+        <input class="form-control" type="text" th:field="*{imageUrl}" name="url" id="url" placeholder="Picture url"/>
+        <input type="hidden" th:field="*{updatedOn}"/>
+      </p>
+      <p>
+        <label class="text-white" for="content">Content</label>
+        <textarea class="form-control textareaa " type="text" th:field="*{content}" id="content" rows="5" maxlength="500"></textarea></p>
+      <p>
+        <button type="submit" class="btn btn-info w-100">Edit post</button>
+      </p>
+      <div th:if="${#fields.hasAnyErrors()}">
+        <ul>
+          <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </ul>
+      </div>
+    </form>
+    <p><a th:href="@{/}">
+      <button type="button" class="btn btn-primary w-100">Go back</button>
+    </a>
+    </p>
+  </div>
+</div>
+</div>
+</body>

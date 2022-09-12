@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:insert="fragments/fragments :: head-content"></head>
+<body>
+<nav th:insert="fragments/fragments :: nav-bar-fragment(${user})"></nav>
+
+<div class="block-container">
+    <div class="itemas">
+        <div th:style="'background:url(' + ${post.imageUrl} + '); background-position: center; background-size: cover;' "
+             class="cololo-gg">
+        </div>
+        <div class="post-details-whole-block-padding">
+            <div class="buttonai">
+                <div th:if="${user.canEditArticles()}">
+                    <div th:if="${post.getUserId().equals(user.getId()) || user.isAdmin()}">
+                            <a th:href="@{/private/post/edit/{id}(id=${post.getId()})}">
+                                <button type="button" class="btn btn-primary w-100 mt-0" id="profile-edit-button">Edit post</button>
+                            </a>
+                </div>
+                </div>
+            </div>
+            <div class="test">
+            <div class="article-info">
+                <h5 class="card-title text-white break-word" th:text="${post.title}">Title</h5>
+                <p class="card-subtitle mb-2 text-muted" th:text="${post.authorName}">Created by</p>
+                <p class="card-subtitle mb-2 text-muted" th:text="${post.time}">Date created</p>
+                <p class="card-subtitle mb-2 text-muted" th:text="${post.updatedTime}">Date created</p>
+         </div>
+            <div class="article-content-text-block">
+                <p class="card-subtitle mb-2 text-muted break-word" th:text="${post.content}">Date created</p></div>
+        </div>
+            <div class="comment-sub-container" th:each="comment : ${post.comments}">
+                <div class="comment-content-sub-container">
+                    <div class="comment-content-avatar-container">
+                        <div th:style="'background:url(' + ${comment.authorAvatarImageUrl} + '); background-position: center; background-size: cover;' "
+                             class="comment-author-avatar-image">
+                        </div>
+                        <p>
+                            <b th:text="${comment.username}" class="break-word comment-user-details-info"></b>
+                        </p>
+                        <small th:text="${comment.time}" class="break-word comment-user-details-info"></small>
+                        <div th:if="${user.id.equals(comment.userId) ||user.isAdmin()}">
+                            <form action="#"
+                                  th:action="@{/private/comment/removeComment/{id}/{postId}(id=${comment.getId()}, postId=${post.getId()})}"
+                                  th:method="delete"
+                            >
+                                <input type="hidden" name="_method" value="delete"/>
+                                <button class="btn btn-danger btn-sm w-100 delete-button" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="comment-content text-white">
+                        <p th:text="${comment.commentText}" id="breakword"></p>
+                    </div>
+                </div>
+            </div>
+            <div sec:authorize="isAuthenticated() " class="comment-block">
+                <form th:action="@{/private/comment/addComment}" th:object="${comment}" th:method="post">
+                    <p>
+                    <textarea class="form-control textareaa " type="text" th:field="*{commentText}" id="content"
+                              rows="3"></textarea>
+                        <input type="hidden" th:field="*{postId}"/>
+                    </p>
+                    <input type="hidden" name="_method" value="comment"/>
+                    <button type="submit" class="btn btn-success">Post comment</button>
+                </form>
+            </div>
+</div>
+</div>
+</div>
+</body>
+</html>

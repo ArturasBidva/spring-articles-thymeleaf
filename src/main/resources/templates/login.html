@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head th:insert="fragments/fragments :: head-content">
+</head>
+<body>
+
+<div class="login-form-container">
+    <div class="login-form-content">
+        <form th:action="@{/login}" method="post">
+            <p>
+                <label class="text-white" for="username" th:text="#{lang.username}">Username</label>
+                <input class="form-control" type="text" name="username" id="username"></p>
+            <p>
+                <label class="text-white" for="password" th:text="#{lang.password}">Password</label>
+                <input class="form-control" type="password" name="password" id="password"></p>
+            <p>
+            <div th:if="${param.error}" class="text-white">
+                Blogi prisijungimo duomenys.
+            </div>
+                <button type="submit" class="btn btn-info w-100" th:text="#{lang.login}">Login</button>
+            </p>
+        </form>
+        <p>
+            <a th:href="@{/register}">
+                <button type="button" class="btn btn-primary w-100" th:text="#{lang.register}">Register</button>
+            </a>
+        </p>
+    </div>
+</div>
+</body>

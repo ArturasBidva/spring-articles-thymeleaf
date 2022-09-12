@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EntityScan
 public class DemoApplication {
     public DemoApplication() {
-
     }
 
     public static void main(String[] args) {

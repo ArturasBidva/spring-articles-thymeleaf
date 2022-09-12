@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class CreateUserRequest {
-    String name;
-    String username;
-    String password;
-    String repeatPassword;
+   private String name;
+   private String username;
+   private String password;
+   private String repeatPassword;
 }

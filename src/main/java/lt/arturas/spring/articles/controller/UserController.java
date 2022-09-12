@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
-    UserService userService;
+    private final UserService userService;
 
-    UserValidator userValidator;
+    private final UserValidator userValidator;
 
-    UrlValidator urlValidator;
+    private final UrlValidator urlValidator;
 
     @Autowired
     public UserController(

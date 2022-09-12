@@ -11,12 +11,10 @@ import java.sql.Timestamp;
 
 @Service
 public class CommentService {
-    CommentRepository commentRepository;
-    PostService postService;
+    private final CommentRepository commentRepository;
 
-    public CommentService(CommentRepository commentRepository, PostService postService) {
+    public CommentService(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
-        this.postService = postService;
     }
 
     public void createComment(Comment comment) {
